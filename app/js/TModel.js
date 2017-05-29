@@ -767,7 +767,8 @@ function updateReady( ResultH )
 };
 
 function errorHandler( jqXHR, StatusStr, ErrorStr) {
-    alert( StatusStr + ' ' + ErrorStr );
+    console.log( 'Model.error: Ajax', StatusStr, ' ', ErrorStr );
+    //alert( StatusStr + ' ' + ErrorStr );
 };
 
 
