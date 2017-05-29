@@ -26,6 +26,8 @@ function TController( pData, pModel ) {
         document.getElementById( 'buttonNewGame' ).addEventListener( 'mouseup', buttonNewGameClick, false );
         document.getElementById( 'buttonMusicOnOff' ).addEventListener( 'mouseup', buttonMusicOnOffClick, false );
         document.getElementById( 'buttonSoundOnOff' ).addEventListener( 'mouseup', buttonSoundOnOffClick, false );
+        document.getElementById( 'buttonCellCountMinus' ).addEventListener( 'mouseup', buttonCellCountMinusClick, false );
+        document.getElementById( 'buttonCellCountPlus' ).addEventListener( 'mouseup', buttonCellCountPlusClick, false );
 
         window.addEventListener( 'hashchange', changeListenStatus, false );
         //document.addEventListener( 'gameisover', self.StopListen, false );
@@ -181,6 +183,26 @@ function TController( pData, pModel ) {
         return soundOn;
     };
 
+    function buttonCellCountMinusClick( EO ) {
+        EO = EO || window.event;
+        var fCountElm = document.getElementById( 'cellCount' );
+        var fCount = parseInt( fCountElm.textContent );
+        if ( fCount > cellCount.min ) {
+            fCount--;
+            fCountElm.textContent = fCount;
+        };
+    };
+
+    function buttonCellCountPlusClick( EO ) {
+        EO = EO || window.event;
+        var fCountElm = document.getElementById( 'cellCount' );
+        var fCount = parseInt( fCountElm.textContent );
+        if ( fCount < cellCount.max ) {
+            fCount++;
+            fCountElm.textContent = fCount;
+        };
+    };
+    
     function changeListenStatus ( EO ) {
         EO = EO || window.event;
         var hashStr = EO.newURL.substr( EO.newURL.indexOf( '#' ) );

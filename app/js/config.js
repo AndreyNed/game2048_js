@@ -4,8 +4,10 @@ var consoleLog = false;
 
 //== FIELD CONFIGURATION == COUNT OF HORIZONTAL AND VERTICAL CELLS ON
 var cellCount = {
-    x: 4,
-    y: 4
+    x:      4,
+    y:      4,
+    max:    12,
+    min:    4
 };
 
 //== HASH FOR MODEL DATA

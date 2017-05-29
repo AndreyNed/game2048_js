@@ -16,6 +16,13 @@ $soundOnOffButtonColorActive: #6C7B8B;
 
 $menuTextColor: #999999;
 
+@mixin userselectnone {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 html, body, * {
     margin: 0;
     padding: 0;
@@ -52,6 +59,7 @@ body {
 }
 
 #infoContainer {
+    @include userselectnone;
     height: calc( 20vh - 10px );
     top: calc(2.5vh + 1vmin);
     > .logoContainer {
@@ -185,6 +193,7 @@ body {
 }
 
 #fieldButtonsContainer {
+    @include userselectnone;
     display: none;
     position: absolute;
     width: 80%;
@@ -219,6 +228,95 @@ body {
             font-family: Arial, sans-serif;
             text-decoration: none;
         }
+    }
+    > .fieldOppositeButtonContainer {
+        @include userselectnone;
+        position: absolute;
+        width: 100%;
+        height: 8vh;
+        max-height: 8vmin;
+        left: 0;
+        font-family: Arial, sans-serif;
+        font-size: 3.5vmin;
+        text-align: center;
+        > .fieldOppositeButtonLeft {
+            position: absolute;
+            width: 20%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 10px 0 0 10px;
+            box-shadow: 0 1px 1px #000;
+            &:hover {
+                box-shadow: 0 1px 1px #000;
+            }
+            &:active {
+                box-shadow: 0 0 0 #000;
+            }
+            > a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                color: #fff;
+                text-decoration: none;
+                padding-top: 2vmin;
+            }
+        }
+        > .fieldOppositeButtonRight {
+            position: absolute;
+            width: 20%;
+            height: 100%;
+            left: 80%;
+            top: 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 1px 1px #000;
+            &:hover {
+                box-shadow: 0 1px 1px #000;
+            }
+            &:active {
+                box-shadow: 0 0 0 #000;
+            }
+            > a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                color: #fff;
+                text-decoration: none;
+                padding-top: 2vmin;
+
+            }
+        }
+        > .fieldOppositeButtonCenter {
+            position: absolute;
+            width: 60%;
+            height: 100%;
+            left: 20%;
+            top: 0;
+            padding-top: 2vmin;
+            background-color: $soundOnOffButtonColor;
+            box-shadow: 0 1px 1px #000;
+        }
+    }
+}
+
+#buttonCellCountContainer {
+    display: none;
+    /*user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;*/
+    top: 50%;
+}
+
+#buttonCellCountMinus,
+#buttonCellCountPlus {
+    cursor: pointer;
+    background-color: $soundOnOffButtonColor;
+    &:hover {
+        background-color: $soundOnOffButtonColorHover;
+    }
+    &:active {
+        background-color: $soundOnOffButtonColorActive;
     }
 }
 
@@ -271,6 +369,18 @@ body {
     }
     &:active {
         background-color: $backToGameButtonColorActive;
+    }
+}
+
+#buttonCellCount {
+    top: 50%;
+    background-color: $soundOnOffButtonColor;
+    color: #fff;
+    &:hover {
+        background-color: $soundOnOffButtonColorHover;
+    }
+    &:active {
+        background-color: $soundOnOffButtonColorActive;
     }
 }
 

@@ -645,10 +645,14 @@ function TModel ( pData, pView ) {
 
     function startNewGame() {
         D.score = 0;
+        var fCount = parseInt( document.getElementById( 'cellCount' ).textContent );
+        cellCount.x = fCount;
+        cellCount.y = fCount;
         if ( D.viewUI ) {
             D.viewUI.HidePageElements().HideField();
         };
         if ( D.view ) {
+            D.view.Init();
             D.view.DrawField();
         };
         D.field = buildField( cellCount.x, cellCount.y );

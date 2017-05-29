@@ -29,6 +29,10 @@ body {
       height: 100%; }
 
 #infoContainer {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   height: calc( 20vh - 10px);
   top: calc(2.5vh + 1vmin); }
   #infoContainer > .logoContainer {
@@ -144,6 +148,10 @@ body {
   top: calc( 100vh - 77.5vh); }
 
 #fieldButtonsContainer {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   display: none;
   position: absolute;
   width: 80%;
@@ -175,6 +183,85 @@ body {
       font-size: 3.5vmin;
       font-family: Arial, sans-serif;
       text-decoration: none; }
+  #fieldButtonsContainer > .fieldOppositeButtonContainer {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    position: absolute;
+    width: 100%;
+    height: 8vh;
+    max-height: 8vmin;
+    left: 0;
+    font-family: Arial, sans-serif;
+    font-size: 3.5vmin;
+    text-align: center; }
+    #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonLeft {
+      position: absolute;
+      width: 20%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      border-radius: 10px 0 0 10px;
+      box-shadow: 0 1px 1px #000; }
+      #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonLeft:hover {
+        box-shadow: 0 1px 1px #000; }
+      #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonLeft:active {
+        box-shadow: 0 0 0 #000; }
+      #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonLeft > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+        padding-top: 2vmin; }
+    #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonRight {
+      position: absolute;
+      width: 20%;
+      height: 100%;
+      left: 80%;
+      top: 0;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 0 1px 1px #000; }
+      #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonRight:hover {
+        box-shadow: 0 1px 1px #000; }
+      #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonRight:active {
+        box-shadow: 0 0 0 #000; }
+      #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonRight > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        text-decoration: none;
+        padding-top: 2vmin; }
+    #fieldButtonsContainer > .fieldOppositeButtonContainer > .fieldOppositeButtonCenter {
+      position: absolute;
+      width: 60%;
+      height: 100%;
+      left: 20%;
+      top: 0;
+      padding-top: 2vmin;
+      background-color: #B9D3EE;
+      box-shadow: 0 1px 1px #000; }
+
+#buttonCellCountContainer {
+  display: none;
+  /*user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;*/
+  top: 50%; }
+
+#buttonCellCountMinus,
+#buttonCellCountPlus {
+  cursor: pointer;
+  background-color: #B9D3EE; }
+  #buttonCellCountMinus:hover,
+  #buttonCellCountPlus:hover {
+    background-color: #9FB6CD; }
+  #buttonCellCountMinus:active,
+  #buttonCellCountPlus:active {
+    background-color: #6C7B8B; }
 
 #buttonNewGame {
   display: none;
@@ -215,6 +302,15 @@ body {
     background-color: #7B68EE; }
   #buttonBackToGame:active {
     background-color: #6A5ACD; }
+
+#buttonCellCount {
+  top: 50%;
+  background-color: #B9D3EE;
+  color: #fff; }
+  #buttonCellCount:hover {
+    background-color: #9FB6CD; }
+  #buttonCellCount:active {
+    background-color: #6C7B8B; }
 
 #resultsContainer {
   display: none;

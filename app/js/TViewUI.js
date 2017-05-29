@@ -2,13 +2,15 @@ function TViewUI( pData, pModel ) {
 var self = this;
     var D = pData || {};
     D.model = pModel || pData || null;
-    D.pageContainer = document.getElementById( 'pagesContainer' );
-    D.fieldButtonContainer = document.getElementById( 'fieldButtonsContainer' );
-    D.buttonNewGame = document.getElementById( 'buttonNewGame' );
-    D.buttonBackToGame = document.getElementById( 'buttonBackToGame' );
-    D.buttonMusicOnOff = document.getElementById( 'buttonMusicOnOff' );
-    D.buttonSoundOnOff = document.getElementById( 'buttonSoundOnOff' );
-    D.resultsContainer = document.getElementById( 'resultsContainer' );
+    D.pageContainer             = document.getElementById( 'pagesContainer' );
+    D.fieldButtonContainer      = document.getElementById( 'fieldButtonsContainer' );
+    D.buttonNewGame             = document.getElementById( 'buttonNewGame' );
+    D.buttonBackToGame          = document.getElementById( 'buttonBackToGame' );
+    D.buttonMusicOnOff          = document.getElementById( 'buttonMusicOnOff' );
+    D.buttonSoundOnOff          = document.getElementById( 'buttonSoundOnOff' );
+    D.resultsContainer          = document.getElementById( 'resultsContainer' );
+    D.buttonCellCountContainer  = document.getElementById( 'buttonCellCountContainer' );
+    D.cellCount                 = document.getElementById( 'cellCount' );
 
     self.Set = function( pKey, pValue ) {
         D[ pKey ] = pValue;
@@ -59,14 +61,17 @@ var self = this;
     };
 
     self.ShowMenu = function() {
+        var fCount = cellCount.x;
         self.HideField();
         hidePageElements();
-        D.pageContainer.style.display = 'block';
-        D.fieldButtonContainer.style.display = 'block';
-        D.buttonNewGame.style.display = 'block';
-        D.buttonBackToGame.style.display = 'block';
-        D.buttonMusicOnOff.style.display = 'block';
-        D.buttonSoundOnOff.style.display = 'block';
+        D.pageContainer.style.display               = 'block';
+        D.fieldButtonContainer.style.display        = 'block';
+        D.buttonNewGame.style.display               = 'block';
+        D.buttonBackToGame.style.display            = 'block';
+        D.buttonMusicOnOff.style.display            = 'block';
+        D.buttonSoundOnOff.style.display            = 'block';
+        D.buttonCellCountContainer.style.display    = 'block';
+        D.cellCount.textContent                     = fCount;
         return self;
     };
 
@@ -108,13 +113,14 @@ var self = this;
     };
 
     function hidePageElements() {
-        D.pageContainer.style.display = 'none';
-        D.fieldButtonContainer.style.display = 'none';
-        D.buttonNewGame.style.display = 'none';
-        D.buttonBackToGame.style.display = 'none';
-        D.buttonMusicOnOff.style.display = 'none';
-        D.buttonSoundOnOff.style.display = 'none';
-        D.resultsContainer.style.display = 'none';
+        D.pageContainer.style.display               = 'none';
+        D.fieldButtonContainer.style.display        = 'none';
+        D.buttonNewGame.style.display               = 'none';
+        D.buttonBackToGame.style.display            = 'none';
+        D.buttonMusicOnOff.style.display            = 'none';
+        D.buttonSoundOnOff.style.display            = 'none';
+        D.resultsContainer.style.display            = 'none';
+        D.buttonCellCountContainer.style.display    = 'none';
     };
 
 };
