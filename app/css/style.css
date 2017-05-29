@@ -1,0 +1,258 @@
+html, body, * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%; }
+
+body {
+  background-color: #000;
+  color: #fff; }
+
+.wrapper {
+  position: relative;
+  width: 100vMin;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: #FFDEAD; }
+  .wrapper > .container {
+    position: absolute;
+    /*top: 55%;*/
+    left: 50%;
+    transform: translate(-50%);
+    width: 95vmin;
+    max-width: 75vh; }
+    .wrapper > .container > .canvas {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%; }
+
+#infoContainer {
+  height: calc( 20vh - 10px);
+  top: calc(2.5vh + 1vmin); }
+  #infoContainer > .logoContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100%; }
+  #infoContainer > .menuContainer {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 75%;
+    height: 100%; }
+    #infoContainer > .menuContainer > .menuCol {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%; }
+      #infoContainer > .menuContainer > .menuCol > .topMenuInfoContainer {
+        position: absolute;
+        top: 3%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 95%;
+        height: 55%;
+        border-radius: 10px;
+        background-color: #EEE9E9;
+        color: #999999;
+        font-family: Arial, sans-serif; }
+        #infoContainer > .menuContainer > .menuCol > .topMenuInfoContainer > .infoTopRow {
+          position: absolute;
+          top: 1.5vh;
+          left: 50%;
+          transform: translate(-50%);
+          width: 100%;
+          text-align: center;
+          font-size: 1.9vmin; }
+        #infoContainer > .menuContainer > .menuCol > .topMenuInfoContainer > .infoValue {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          font-size: 4vh;
+          font-weight: bold;
+          transform: translate(-50%); }
+      #infoContainer > .menuContainer > .menuCol > .menuButtonContainer {
+        position: absolute;
+        top: 11vh;
+        width: 100%;
+        height: 39%; }
+        #infoContainer > .menuContainer > .menuCol > .menuButtonContainer > .topMenuButton {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 10px;
+          width: 95%;
+          height: 80%;
+          background-color: #FF9900;
+          box-shadow: 0 1px 1px #000; }
+          #infoContainer > .menuContainer > .menuCol > .menuButtonContainer > .topMenuButton:hover {
+            background-color: #FF6600;
+            box-shadow: 0 1px 1px #000; }
+          #infoContainer > .menuContainer > .menuCol > .menuButtonContainer > .topMenuButton:active {
+            background-color: #FF6600;
+            box-shadow: 0 0 0 #000; }
+          #infoContainer > .menuContainer > .menuCol > .menuButtonContainer > .topMenuButton > a {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            padding-top: 1.7vh;
+            top: 0;
+            left: 0;
+            display: block;
+            color: #fff;
+            font-size: 2.5vmin;
+            font-family: Arial, sans-serif;
+            text-decoration: none; }
+
+#logo {
+  background-color: #FFCC33;
+  margin: 5% 0 0 5%;
+  width: 90%;
+  height: 90%;
+  border-radius: 15px;
+  text-align: center; }
+
+#l2048 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 5vmin; }
+
+#menuLeftCol {
+  left: 0; }
+
+#menuRightCol {
+  left: 50%; }
+
+#canvasContainer {
+  height: 95vmin;
+  max-height: 75vh;
+  top: calc( 100vh - 77.5vh); }
+
+#pagesContainer {
+  display: none;
+  height: 95vmin;
+  max-height: 75vh;
+  top: calc( 100vh - 77.5vh); }
+
+#fieldButtonsContainer {
+  display: none;
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  left: 50%;
+  transform: translate(-50%); }
+  #fieldButtonsContainer > .fieldButton {
+    position: absolute;
+    width: 100%;
+    height: 8vh;
+    max-height: 8vmin;
+    left: 0;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px #000; }
+    #fieldButtonsContainer > .fieldButton:hover {
+      box-shadow: 0 1px 1px #000; }
+    #fieldButtonsContainer > .fieldButton:active {
+      box-shadow: 0 0 0 #000; }
+    #fieldButtonsContainer > .fieldButton > a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      padding-top: 2.5vmin;
+      top: 0;
+      left: 0;
+      display: block;
+      color: #fff;
+      font-size: 3.5vmin;
+      font-family: Arial, sans-serif;
+      text-decoration: none; }
+
+#buttonNewGame {
+  display: none;
+  top: 80%;
+  background-color: #00BFFF;
+  color: #fff; }
+  #buttonNewGame:hover {
+    background-color: #00B2EE; }
+  #buttonNewGame:active {
+    background-color: #009ACD; }
+
+#buttonMusicOnOff {
+  display: none;
+  top: 35%;
+  background-color: #B9D3EE;
+  color: #fff; }
+  #buttonMusicOnOff:hover {
+    background-color: #9FB6CD; }
+  #buttonMusicOnOff:active {
+    background-color: #6C7B8B; }
+
+#buttonSoundOnOff {
+  display: none;
+  top: 20%;
+  background-color: #B9D3EE;
+  color: #fff; }
+  #buttonSoundOnOff:hover {
+    background-color: #9FB6CD; }
+  #buttonSoundOnOff:active {
+    background-color: #6C7B8B; }
+
+#buttonBackToGame {
+  display: none;
+  top: 5%;
+  background-color: #8470FF;
+  color: #fff; }
+  #buttonBackToGame:hover {
+    background-color: #7B68EE; }
+  #buttonBackToGame:active {
+    background-color: #6A5ACD; }
+
+#resultsContainer {
+  display: none;
+  color: #999999;
+  font: bold 3vh Arial, sans-serif;
+  position: absolute;
+  width: 80%;
+  height: 90%;
+  left: 50%;
+  top: 3vh;
+  transform: translate(-50%); }
+
+#resultsTitle {
+  font-size: 3vmin;
+  height: 6vh;
+  text-align: center;
+  padding-top: 1vh; }
+
+#resultsTable {
+  font-size: 2.5vmin; }
+  #resultsTable tbody > tr > th {
+    padding-top: 1vh;
+    padding-bottom: 1vh; }
+  #resultsTable tbody > tr > td:nth-of-type(1) {
+    text-align: right;
+    padding-right: 1vh;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh; }
+  #resultsTable tbody > tr > td:nth-of-type(2) {
+    text-align: left;
+    padding-left: 1vh;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh; }
+  #resultsTable tbody > tr > td:nth-of-type(3) {
+    text-align: right;
+    padding-right: 1vh;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh; }
+
+.border {
+  border: 1px dotted #000; }
