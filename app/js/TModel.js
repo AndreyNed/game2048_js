@@ -1,22 +1,23 @@
 function TModel ( pData, pView ) {
-    var self        = this;
-    var D           = pData || {};
-    D.view          = D.view || null;
-    D.field         = D.field || buildField( cellCount.x, cellCount.y );//creates initial D.field;
+    var self            = this;
+    var D               = pData || {};
+    D.view              = D.view || null;
+    D.field             = D.field || buildField( cellCount.x, cellCount.y );//creates initial D.field;
     consoleLog ? console.log('%c%s', 'color: green;', 'Model.success: Field is initialized...', D.field) : '';
-    D.merge = [];//for cells with needMerge = true
-    D.readyToNew    = false;//indicates if model is ready for new cell
-    D.busy          = false;//isMoving + isScaling
-    D.needNew       = true;
-    D.score         = 0;
-    D.audio         = D.audio || null;
-    D.musicCurrentTime = 0;
-    D.gameIsGoOn    = true;
-    D.results = [];
+    D.merge             = [];//for cells with needMerge = true
+    D.readyToNew        = false;//indicates if model is ready for new cell
+    D.busy              = false;//isMoving + isScaling
+    D.needNew           = true;
+    D.score             = 0;
+    D.audio             = D.audio || null;
+    D.musicCurrentTime  = 0;
+    D.gameIsGoOn        = true;
+    D.results           = [];
     D.ajaxHandlerScript = "http://fe.it-academy.by/AjaxStringStorage2.php";
-    D.stringName = "Nedaseikin_2048";
-    D.updatePassword = 0;
-    D.bestResult = 0;
+    D.stringName        = "Nedaseikin_2048";
+    D.updatePassword    = 0;
+    D.bestResult        = 0;
+    D.currentUser       = 'User';
 
     //storeInfo();
     restoreInfo();
@@ -667,7 +668,7 @@ function TModel ( pData, pView ) {
         for ( var i = 0; i < D.results.length; i++ ) {
             if ( D.results[ i ].result < D.score ) {
                 D.results[ i ].result = D.score;
-                D.results[ i ].name = 'User';
+                D.results[ i ].name = D.currentUser;
                 break;
             };
         }; 

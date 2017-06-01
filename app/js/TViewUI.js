@@ -11,6 +11,7 @@ var self = this;
     D.resultsContainer          = document.getElementById( 'resultsContainer' );
     D.buttonCellCountContainer  = document.getElementById( 'buttonCellCountContainer' );
     D.cellCount                 = document.getElementById( 'cellCount' );
+    D.inputUserName             = document.getElementById( 'inputUserName' );
 
     self.Set = function( pKey, pValue ) {
         D[ pKey ] = pValue;
@@ -64,6 +65,8 @@ var self = this;
         var fCount = cellCount.x;
         self.HideField();
         hidePageElements();
+        D.inputUserName.style.display               = 'block';
+        D.inputUserName.value                       = D.model.Get( 'currentUser' );
         D.pageContainer.style.display               = 'block';
         D.fieldButtonContainer.style.display        = 'block';
         D.buttonNewGame.style.display               = 'block';
@@ -121,6 +124,7 @@ var self = this;
         D.buttonSoundOnOff.style.display            = 'none';
         D.resultsContainer.style.display            = 'none';
         D.buttonCellCountContainer.style.display    = 'none';
+        D.inputUserName.style.display               = 'none';
     };
 
 };

@@ -28,6 +28,7 @@ function TController( pData, pModel ) {
         document.getElementById( 'buttonSoundOnOff' ).addEventListener( 'mouseup', buttonSoundOnOffClick, false );
         document.getElementById( 'buttonCellCountMinus' ).addEventListener( 'mouseup', buttonCellCountMinusClick, false );
         document.getElementById( 'buttonCellCountPlus' ).addEventListener( 'mouseup', buttonCellCountPlusClick, false );
+        document.getElementById( 'inputUserName' ).addEventListener( 'change', inputUserNameChange, false );
 
         window.addEventListener( 'hashchange', changeListenStatus, false );
         //document.addEventListener( 'gameisover', self.StopListen, false );
@@ -201,6 +202,17 @@ function TController( pData, pModel ) {
             fCount++;
             fCountElm.textContent = fCount;
         };
+    };
+
+    function inputUserNameChange( EO ) {
+        EO = EO || window.event;
+        var newValue = document.getElementById( 'inputUserName' ).value;
+        newValue = newValue.trim();
+        if ( newValue == "" ) {
+            newValue = "User";
+        };
+        D.model.Set( 'currentUser', newValue );
+        document.getElementById( 'inputUserName' ).value = newValue;
     };
     
     function changeListenStatus ( EO ) {
