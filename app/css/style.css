@@ -158,6 +158,29 @@ body {
   height: 100%;
   left: 50%;
   transform: translate(-50%); }
+  #fieldButtonsContainer > .fieldInputContainer {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    height: 8vh;
+    max-height: 8vmin;
+    width: 100%; }
+    #fieldButtonsContainer > .fieldInputContainer > .fieldInput {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      outline: 0;
+      outline-offset: 0;
+      border: 1px solid #999999;
+      background-color: #fff;
+      padding: 4px 2px 4px 5px;
+      text-align: center;
+      font: normal 3.5vmin Arial, sans-serif;
+      color: #999999; }
+      #fieldButtonsContainer > .fieldInputContainer > .fieldInput:focus {
+        outline: 0;
+        border: 1px solid #00BFFF;
+        border-radius: 10px; }
   #fieldButtonsContainer > .fieldButton {
     position: absolute;
     width: 100%;
@@ -250,7 +273,7 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;*/
-  top: 50%; }
+  top: 65%; }
 
 #buttonCellCountMinus,
 #buttonCellCountPlus {
@@ -275,7 +298,7 @@ body {
 
 #buttonMusicOnOff {
   display: none;
-  top: 35%;
+  top: 50%;
   background-color: #B9D3EE;
   color: #fff; }
   #buttonMusicOnOff:hover {
@@ -285,7 +308,7 @@ body {
 
 #buttonSoundOnOff {
   display: none;
-  top: 20%;
+  top: 35%;
   background-color: #B9D3EE;
   color: #fff; }
   #buttonSoundOnOff:hover {
@@ -295,7 +318,7 @@ body {
 
 #buttonBackToGame {
   display: none;
-  top: 5%;
+  top: 20%;
   background-color: #8470FF;
   color: #fff; }
   #buttonBackToGame:hover {

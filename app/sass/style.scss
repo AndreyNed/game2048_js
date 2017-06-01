@@ -16,11 +16,11 @@ $soundOnOffButtonColorActive: #6C7B8B;
 
 $menuTextColor: #999999;
 
-@mixin userselectnone {
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+@mixin userselect($mode: none) {
+    user-select: $mode;
+    -moz-user-select: $mode;
+    -webkit-user-select: $mode;
+    -ms-user-select: $mode;
 }
 
 html, body, * {
@@ -59,7 +59,7 @@ body {
 }
 
 #infoContainer {
-    @include userselectnone;
+    @include userselect(none);
     height: calc( 20vh - 10px );
     top: calc(2.5vh + 1vmin);
     > .logoContainer {
@@ -193,13 +193,39 @@ body {
 }
 
 #fieldButtonsContainer {
-    @include userselectnone;
+    @include userselect(none);
     display: none;
     position: absolute;
     width: 80%;
     height: 100%;
     left: 50%;
     transform: translate( -50% );
+    > .fieldInputContainer {
+        position: absolute;
+        top: 5%;
+        left: 0;
+        height: 8vh;
+        max-height: 8vmin;
+        width: 100%;
+        > .fieldInput{
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            outline: 0;
+            outline-offset: 0;
+            border: 1px solid $menuTextColor;
+            background-color: #fff;
+            padding: 4px 2px 4px 5px;
+            text-align: center;
+            font: normal 3.5vmin Arial, sans-serif;
+            color: $menuTextColor;
+            &:focus {
+                outline: 0;
+                border: 1px solid $newGameButtonColor;
+                border-radius: 10px;
+            }
+        }
+    }
     > .fieldButton {
         position: absolute;
         width: 100%;
@@ -230,7 +256,7 @@ body {
         }
     }
     > .fieldOppositeButtonContainer {
-        @include userselectnone;
+        @include userselect(none);
         position: absolute;
         width: 100%;
         height: 8vh;
@@ -305,7 +331,7 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;*/
-    top: 50%;
+    top: 65%;
 }
 
 #buttonCellCountMinus,
@@ -335,7 +361,7 @@ body {
 
 #buttonMusicOnOff {
     display: none;
-    top: 35%;
+    top: 50%;
     background-color: $soundOnOffButtonColor;
     color: #fff;
     &:hover {
@@ -348,7 +374,7 @@ body {
 
 #buttonSoundOnOff {
     display: none;
-    top: 20%;
+    top: 35%;
     background-color: $soundOnOffButtonColor;
     color: #fff;
     &:hover {
@@ -361,7 +387,7 @@ body {
 
 #buttonBackToGame {
     display: none;
-    top: 5%;
+    top: 20%;
     background-color: $backToGameButtonColor;
     color: #fff;
     &:hover {
