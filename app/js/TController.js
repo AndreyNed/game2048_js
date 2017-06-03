@@ -7,6 +7,7 @@ function TController( pData, pModel ) {
     D.initialPoint  = 0;
     D.finalPoint    = 0;
     D.gesuredZone   = document.getElementById('canvasContainer');
+    D.inputUserNameBeforeChanges = 'User';
 
     self.Set = function( pKey, pValue ) {
         D[ pKey ] = pValue;
@@ -29,6 +30,7 @@ function TController( pData, pModel ) {
         document.getElementById( 'buttonCellCountMinus' ).addEventListener( 'mouseup', buttonCellCountMinusClick, false );
         document.getElementById( 'buttonCellCountPlus' ).addEventListener( 'mouseup', buttonCellCountPlusClick, false );
         document.getElementById( 'inputUserName' ).addEventListener( 'change', inputUserNameChange, false );
+        document.getElementById( 'inputUserName' ).addEventListener( 'blur', inputUserNameChange, false );
         document.getElementById( 'inputUserName' ).addEventListener( 'focus', inputUserNameFocus, false );
 
         window.addEventListener( 'hashchange', changeListenStatus, false );
@@ -207,20 +209,21 @@ function TController( pData, pModel ) {
 
     function inputUserNameChange( EO ) {
         EO = EO || window.event;
-        var newValue = document.getElementById( 'inputUserName' ).value;
+        var Elm = document.getElementById( 'inputUserName' );
+        var newValue = Elm.value;
         newValue = newValue.trim();
         if ( newValue == "" ) {
-            newValue = "User";
+            newValue = D.model.Get( 'currentUserBeforeChanges' );
         };
         D.model.Set( 'currentUser', newValue );
-        document.getElementById( 'inputUserName' ).value = newValue;
+        Elm.value = newValue;
     };
 
     function inputUserNameFocus( EO ) {
         var Elm = document.getElementById( 'inputUserName' );
-        if ( Elm.value == 'User' ) {
-            Elm.value = '';
-        };
+        var ValueBeforeChanges = ( Elm.value == '') ? 'User' : Elm.value;
+        D.model.Set( 'currentUserBeforeChanges', ValueBeforeChanges );
+        Elm.value = '';
     };
     
     function changeListenStatus ( EO ) {
