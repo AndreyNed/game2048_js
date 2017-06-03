@@ -29,6 +29,7 @@ function TController( pData, pModel ) {
         document.getElementById( 'buttonCellCountMinus' ).addEventListener( 'mouseup', buttonCellCountMinusClick, false );
         document.getElementById( 'buttonCellCountPlus' ).addEventListener( 'mouseup', buttonCellCountPlusClick, false );
         document.getElementById( 'inputUserName' ).addEventListener( 'change', inputUserNameChange, false );
+        document.getElementById( 'inputUserName' ).addEventListener( 'focus', inputUserNameFocus, false );
 
         window.addEventListener( 'hashchange', changeListenStatus, false );
         //document.addEventListener( 'gameisover', self.StopListen, false );
@@ -213,6 +214,13 @@ function TController( pData, pModel ) {
         };
         D.model.Set( 'currentUser', newValue );
         document.getElementById( 'inputUserName' ).value = newValue;
+    };
+
+    function inputUserNameFocus( EO ) {
+        var Elm = document.getElementById( 'inputUserName' );
+        if ( Elm.value == 'User' ) {
+            Elm.value = '';
+        };
     };
     
     function changeListenStatus ( EO ) {
