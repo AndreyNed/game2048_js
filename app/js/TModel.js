@@ -667,13 +667,9 @@ function TModel ( pData, pView ) {
 
     function gameIsOver() {
         consoleLog ? console.log('%c%s', 'color: green;', 'Model.success: The game is over...') : '';
-        for ( var i = 0; i < D.results.length; i++ ) {
-            if ( D.results[ i ].result < D.score ) {
-                D.results[ i ].result = D.score;
-                D.results[ i ].name = D.currentUser;
-                break;
-            };
-        }; 
+        D.results.push( { name: D.currentUser, result: D.score } );
+        D.results.sort( hashItemsCompare );
+        D.results.splice( 10, D.results.length - 10 );
         storeInfo();
         D.gameIsGoOn = false;
         window.location.hash = '#gameisover';
@@ -710,6 +706,14 @@ function TModel ( pData, pView ) {
         return isOver;
     };
 
+    function hashItemsCompare( pA, pB ) {
+        pA.result = pA.result || 0;
+        pB.result = pB.result || 0;
+        pA.result = parseInt( pA.result );
+        pB.result = parseInt( pB.result );
+        return (pA.result - pB.result) * -1; 
+    };
+
     
 //=== AJAX ===
 
@@ -730,12 +734,15 @@ function readReady( ResultH )
     else if ( ResultH.result != "" ) {
         var InfoH = JSON.parse( ResultH.result ); 
         consoleLog ? console.log('%c%s', 'color: green;', 'Model.success: Receiving data: ', InfoH) : '';
+        //console.log( 'InfoH: ', InfoH );
+        InfoH.sort( hashItemsCompare );
+        //console.log( 'InfoH.sort: ', InfoH );
         D.results = InfoH;
         consoleLog ? console.log('%c%s', 'color: green;', 'Model.success: D.results: ', D.results) : '';
-        D.bestResult = 0;
-        for ( var i = 0; i < D.results.length; i++ ) {
-            D.bestResult = Math.max( D.bestResult, parseInt(D.results[ i ].result) );
-        };
+        D.bestResult = ( D.results[0].result ) ? D.results[ 0 ].result : 0;
+        /*for ( var i = 0; i < D.results.length; i++ ) {
+            D.bestResult = Math.max( D.bestResult, parseInt( D.results[ i ].result ) );
+        };*/
     };
 };
 
