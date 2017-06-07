@@ -12,6 +12,7 @@ var self = this;
     D.buttonCellCountContainer  = document.getElementById( 'buttonCellCountContainer' );
     D.cellCount                 = document.getElementById( 'cellCount' );
     D.inputUserName             = document.getElementById( 'inputUserName' );
+    D.scoreValue                = document.getElementById( 'score' );
 
     self.Set = function( pKey, pValue ) {
         D[ pKey ] = pValue;
@@ -86,11 +87,29 @@ var self = this;
         var results = D.model.Get( 'results' );
         consoleLog ? console.log('%c%s', 'color: green;', 'ViewUI.success: Results: ', results) : '';
         for ( var i = 0; i < results.length; i++ ){
-            document.querySelector('#resultsTable>tbody>tr:nth-of-type(' + (i + 2) + ')>td:nth-of-type(2)').textContent = results[ i ].name;
-            document.querySelector('#resultsTable>tbody>tr:nth-of-type(' + (i + 2) + ')>td:nth-of-type(3)').textContent = results[ i ].result;
+            document.querySelector('#resultsTable>tbody>tr:nth-of-type(' + ( i + 1 ) + ')>td:nth-of-type(2)').textContent = results[ i ].name;
+            document.querySelector('#resultsTable>tbody>tr:nth-of-type(' + ( i + 1 ) + ')>td:nth-of-type(3)').textContent = results[ i ].result;
         };
 
         return self;
+    };
+
+    self.ShowResultsFieldPage = function( pResultIndex ) {
+        D.context.fillStyle = fieldColor;
+        D.context.strokeStyle = fieldColor;
+        roundedRect( D.context, 0, 0, D.canvas.width, D.canvas.height, D.canvas.width * 0.05 );
+        D.context.fill();
+        hidePageElements();
+        var fieldResult = D.model.Get( 'results' )[ pResultIndex ].field;
+        var fieldCountY = fieldResult.length;
+        var fieldCountX = fieldResult[ 0 ].length;
+        for ( var j = 0; j < fieldCountY; j++ ) {
+            for ( var i = 0; i < fieldCountX; i++ ) {
+                drawCell( D.context, fieldResult[ j ][ i ], i, j, false );
+            };
+        };
+        var scoreResult = D.model.Get( 'results' )[ pResultIndex ].result;
+        D.scoreValue.textContent = scoreResult;
     };
 
     function drawText( pText, pX, pY, pFont, pColor, pAlign, pBaseline ) {
@@ -113,6 +132,28 @@ var self = this;
         pContext.lineTo( pX + pRadius, pY );
         pContext.quadraticCurveTo( pX, pY, pX, pY + pRadius );
         pContext.stroke();
+    };
+
+    function drawCell( pContext, pNumber, pX, pY, pIsCalculated ) {
+        var radius   = D.canvas.width * 0.05;
+        var spaceX   = D.canvas.width * 0.02;
+        var spaceY   = D.canvas.height * 0.02;
+        var sizeX    = Math.round( ( D.canvas.width - spaceX ) / cellCount.x - spaceX );
+        var sizeY    = Math.round( ( D.canvas.height - spaceY ) / cellCount.y - spaceY );
+
+        if ( pNumber > 0 ) {
+            var posX = pIsCalculated ? pX : Math.round( spaceX + pX * ( sizeX + spaceX ) );
+            var posY = pIsCalculated ? pY : Math.round( spaceY + pY * ( sizeY + spaceY ) );
+            pContext.strokeStyle = cellColor[pNumber];
+            pContext.fillStyle = cellColor[pNumber];
+            roundedRect( pContext, posX, posY, sizeX, sizeY, radius * 0.5 );
+            pContext.fill();
+            pContext.fillStyle = '#fff';
+            pContext.textAlign = 'center';
+            pContext.textBaseline = 'middle';
+            pContext.font = 'normal bold ' + Math.round(sizeY / 3.5) + 'px Arial, sans-serif';
+            pContext.fillText(pNumber, posX + sizeX / 2, posY + sizeY / 2);
+        };
     };
 
     function hidePageElements() {

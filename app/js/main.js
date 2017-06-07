@@ -45,7 +45,6 @@ Model.Get( 'audio' ).PlaySound( cSound.music );
 
 //======================================================
 
-
 RequestAnimationFrame( renderAll );
 
 function renderAll () {

@@ -191,10 +191,20 @@ function TModel ( pData, pView ) {
     };
 
     self.ChangeLocation = function( pHash ) {
+        var newHash = null;
         if ( D.audio ) {
             D.audio.PlaySound( cSound.click );
         };
-        switch ( pHash ) {
+
+        if ( pHash.indexOf( cRouter.resultsfield ) > -1 && pHash.length > cRouter.resultsfield.length ) {
+            newHash = pHash.substr( 0, cRouter.resultsfield.length );
+            var rowIndex = parseInt( pHash.substr( cRouter.resultsfield.length ) );
+        } else {
+            newHash = pHash;
+        };
+                
+        //console.log( pHash, ' : ', newHash, ' : ', rowIndex );
+        switch ( newHash ) {
             case cRouter.menu:
                 showMenuPage();
             break;
@@ -206,6 +216,9 @@ function TModel ( pData, pView ) {
             break;
             case cRouter.newgame:
                 startNewGame();
+            break;
+            case cRouter.resultsfield:
+                showResultsFieldPage( rowIndex );
             break;
             default:
                 showGamePage();
@@ -646,6 +659,11 @@ function TModel ( pData, pView ) {
         D.viewUI.ShowMenu();
     };
 
+    function showResultsFieldPage( pResultIndex ) {
+        D.gameIsGoOn = false;
+        D.viewUI.ShowResultsFieldPage(pResultIndex);
+    };
+
     function startNewGame() {
         D.score = 0;
         var fCount = parseInt( document.getElementById( 'cellCount' ).textContent );
@@ -667,7 +685,15 @@ function TModel ( pData, pView ) {
 
     function gameIsOver() {
         consoleLog ? console.log('%c%s', 'color: green;', 'Model.success: The game is over...') : '';
-        D.results.push( { name: D.currentUser, result: D.score } );
+        var currField = [];
+        for ( var j = 0; j < cellCount.y; j++ ) {
+            currField[ j ] = [];
+            for ( var i = 0; i < cellCount.x; i++ ) {
+                currField[ j ][ i ] = D.field[ j ][ i ].value;
+            };
+        };
+        //console.log( currField );
+        D.results.push( { name: D.currentUser, result: D.score, field: currField } );
         D.results.sort( hashItemsCompare );
         D.results.splice( 10, D.results.length - 10 );
         storeInfo();
@@ -740,9 +766,8 @@ function readReady( ResultH )
         D.results = InfoH;
         consoleLog ? console.log('%c%s', 'color: green;', 'Model.success: D.results: ', D.results) : '';
         D.bestResult = ( D.results[0].result ) ? D.results[ 0 ].result : 0;
-        /*for ( var i = 0; i < D.results.length; i++ ) {
-            D.bestResult = Math.max( D.bestResult, parseInt( D.results[ i ].result ) );
-        };*/
+        //console.log( D.results );
+
     };
 };
 
@@ -783,6 +808,21 @@ function updateReady( ResultH )
 function errorHandler( jqXHR, StatusStr, ErrorStr) {
     console.log( 'Model.error: Ajax', StatusStr, ' ', ErrorStr );
     //alert( StatusStr + ' ' + ErrorStr );
+};
+
+self.ResetResults = function () {
+    for ( var t = 0; t < 10; t++ ) {
+        var currField = [];
+        for ( var j = 0; j < cellCount.y; j++ ) {
+            currField[ j ] = [];
+            for ( var i = 0; i < cellCount.x; i++ ) {
+                currField[ j ][ i ] = 0;
+            };
+        };
+        //console.log( currField );
+        D.results[ t ] = { name: '', result: 0, field: currField };
+    };
+    storeInfo();
 };
 
 

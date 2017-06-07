@@ -88,7 +88,8 @@ var cRouter = {
     menu:       '#menu',
     results:    '#results',
     gameisover: '#gameisover',
-    newgame:    '#newgame'
+    newgame:    '#newgame',
+    resultsfield: '#resultsfield'
 };
 
 

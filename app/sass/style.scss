@@ -14,6 +14,9 @@ $soundOnOffButtonColor: #B9D3EE;
 $soundOnOffButtonColorHover: #9FB6CD;
 $soundOnOffButtonColorActive: #6C7B8B;
 
+$tableHeaderColor: #00B2EE;
+$tabRowHighlightedColor: #7B68EE;
+$tabBodyColor: #EEE9E9;
 $menuTextColor: #999999;
 
 @mixin userselect($mode: none) {
@@ -423,6 +426,7 @@ body {
 }
 
 #resultsTitle {
+    @include userselect(none);
     font-size: 3vmin;
     height: 6vh;
     text-align: center;
@@ -430,30 +434,72 @@ body {
 }
 
 #resultsTable {
+    @include userselect( none );
     font-size: 2.5vmin;
-    tbody > tr {
-        > th {
-            padding-top: 1vh;
-            padding-bottom: 1vh;
+    font-weight: normal;
+    /*border: 1px solid $menuTextColor;*/
+    border-collapse: collapse;
+    thead {
+        border-radius: 10px;
+        background-color: $tableHeaderColor;
+        font-weight: normal;
+        > tr {
+            > th {
+                padding-top: 1vh;
+                padding-bottom: 1vh;   
+                color: #fff;
+            }
+            > th:nth-of-type(1) {
+                border-radius: 10px 0 0 0;
+            }
+            > th:nth-of-type(2) {
+                /*border: 1px solid $tableHeaderColor;*/
+            }
+            > th:nth-of-type(3) {
+                border-radius: 0 10px 0 0;
+            }
         }
+    }
+    tbody {
+        background-color: $tabBodyColor;
+        > tr {
+            transition: background 500ms, color 500ms;
+            > td:nth-of-type(1) {
+                text-align: right;
+                padding-right: 2vh;
+                padding-top: 0.5vh;
+                padding-bottom: 0.5vh;
+                border-top: 1px dotted $menuTextColor;
+            }
+            > td:nth-of-type(2) {
+                text-align: left;
+                padding-left: 1vh;
+                padding-top: 0.5vh;
+                padding-bottom: 0.5vh;
+                border-top: 1px dotted $menuTextColor;
+            }        
+            > td:nth-of-type(3) {
+                text-align: right;
+                padding-right: 6vmin;
+                padding-top: 0.5vh;
+                padding-bottom: 0.5vh;
+                border-top: 1px dotted $menuTextColor;
+            }
+            &:hover {
+                background: white;
+                color: $tabRowHighlightedColor;
+                /*box-shadow: 3px 3px 3px #000;*/
+            }
+        }
+    > tr:nth-of-type(10) {
         > td:nth-of-type(1) {
-            text-align: right;
-            padding-right: 1vh;
-            padding-top: 0.5vh;
-            padding-bottom: 0.5vh;
+            border-radius: 0 0 0 10px;
+
         }
-        > td:nth-of-type(2) {
-            text-align: left;
-            padding-left: 1vh;
-            padding-top: 0.5vh;
-            padding-bottom: 0.5vh;
-        }        
         > td:nth-of-type(3) {
-            text-align: right;
-            padding-right: 1vh;
-            padding-top: 0.5vh;
-            padding-bottom: 0.5vh;
+            border-radius: 0 0 10px 0;
         }
+    }
     }
 }
 

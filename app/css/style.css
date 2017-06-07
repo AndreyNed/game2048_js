@@ -347,31 +347,68 @@ body {
   transform: translate(-50%); }
 
 #resultsTitle {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   font-size: 3vmin;
   height: 6vh;
   text-align: center;
   padding-top: 1vh; }
 
 #resultsTable {
-  font-size: 2.5vmin; }
-  #resultsTable tbody > tr > th {
-    padding-top: 1vh;
-    padding-bottom: 1vh; }
-  #resultsTable tbody > tr > td:nth-of-type(1) {
-    text-align: right;
-    padding-right: 1vh;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh; }
-  #resultsTable tbody > tr > td:nth-of-type(2) {
-    text-align: left;
-    padding-left: 1vh;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh; }
-  #resultsTable tbody > tr > td:nth-of-type(3) {
-    text-align: right;
-    padding-right: 1vh;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh; }
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  font-size: 2.5vmin;
+  font-weight: normal;
+  /*border: 1px solid $menuTextColor;*/
+  border-collapse: collapse; }
+  #resultsTable thead {
+    border-radius: 10px;
+    background-color: #00B2EE;
+    font-weight: normal; }
+    #resultsTable thead > tr > th {
+      padding-top: 1vh;
+      padding-bottom: 1vh;
+      color: #fff; }
+    #resultsTable thead > tr > th:nth-of-type(1) {
+      border-radius: 10px 0 0 0; }
+    #resultsTable thead > tr > th:nth-of-type(2) {
+      /*border: 1px solid $tableHeaderColor;*/ }
+    #resultsTable thead > tr > th:nth-of-type(3) {
+      border-radius: 0 10px 0 0; }
+  #resultsTable tbody {
+    background-color: #EEE9E9; }
+    #resultsTable tbody > tr {
+      transition: background 500ms, color 500ms; }
+      #resultsTable tbody > tr > td:nth-of-type(1) {
+        text-align: right;
+        padding-right: 2vh;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        border-top: 1px dotted #999999; }
+      #resultsTable tbody > tr > td:nth-of-type(2) {
+        text-align: left;
+        padding-left: 1vh;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        border-top: 1px dotted #999999; }
+      #resultsTable tbody > tr > td:nth-of-type(3) {
+        text-align: right;
+        padding-right: 6vmin;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        border-top: 1px dotted #999999; }
+      #resultsTable tbody > tr:hover {
+        background: white;
+        color: #7B68EE;
+        /*box-shadow: 3px 3px 3px #000;*/ }
+    #resultsTable tbody > tr:nth-of-type(10) > td:nth-of-type(1) {
+      border-radius: 0 0 0 10px; }
+    #resultsTable tbody > tr:nth-of-type(10) > td:nth-of-type(3) {
+      border-radius: 0 0 10px 0; }
 
 .border {
   border: 1px dotted #000; }

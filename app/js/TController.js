@@ -32,6 +32,10 @@ function TController( pData, pModel ) {
         document.getElementById( 'inputUserName' ).addEventListener( 'change', inputUserNameChange, false );
         document.getElementById( 'inputUserName' ).addEventListener( 'blur', inputUserNameChange, false );
         document.getElementById( 'inputUserName' ).addEventListener( 'focus', inputUserNameFocus, false );
+        var tRows = document.querySelectorAll( '#resultsTable>tbody>tr' );
+        Array.prototype.forEach.call(tRows, function(pRow, pIndex) {
+            pRow.addEventListener( 'click', trClick, false );
+        });
 
         window.addEventListener( 'hashchange', changeListenStatus, false );
         //document.addEventListener( 'gameisover', self.StopListen, false );
@@ -224,6 +228,13 @@ function TController( pData, pModel ) {
         var ValueBeforeChanges = ( Elm.value == '') ? 'User' : Elm.value;
         D.model.Set( 'currentUserBeforeChanges', ValueBeforeChanges );
         Elm.value = '';
+    };
+
+    function trClick( EO ) {
+        EO = EO || window.event;
+        var fIndex = parseInt( this.querySelector( 'td:nth-of-type(1)' ).textContent ) - 1;
+        window.location.hash = cRouter.resultsfield + fIndex;
+        //console.log( Model.Get( 'results' )[fIndex].field );
     };
     
     function changeListenStatus ( EO ) {
