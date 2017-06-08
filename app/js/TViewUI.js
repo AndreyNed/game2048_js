@@ -13,6 +13,8 @@ var self = this;
     D.cellCount                 = document.getElementById( 'cellCount' );
     D.inputUserName             = document.getElementById( 'inputUserName' );
     D.scoreValue                = document.getElementById( 'score' );
+    D.fieldCountX               = cellCount.x;
+    D.fieldCountY               = cellCount.y;
 
     self.Set = function( pKey, pValue ) {
         D[ pKey ] = pValue;
@@ -101,10 +103,10 @@ var self = this;
         D.context.fill();
         hidePageElements();
         var fieldResult = D.model.Get( 'results' )[ pResultIndex ].field;
-        var fieldCountY = fieldResult.length;
-        var fieldCountX = fieldResult[ 0 ].length;
-        for ( var j = 0; j < fieldCountY; j++ ) {
-            for ( var i = 0; i < fieldCountX; i++ ) {
+        D.fieldCountY = fieldResult.length;
+        D.fieldCountX = fieldResult[ 0 ].length;
+        for ( var j = 0; j < D.fieldCountY; j++ ) {
+            for ( var i = 0; i < D.fieldCountX; i++ ) {
                 drawCell( D.context, fieldResult[ j ][ i ], i, j, false );
             };
         };
@@ -138,8 +140,8 @@ var self = this;
         var radius   = D.canvas.width * 0.05;
         var spaceX   = D.canvas.width * 0.02;
         var spaceY   = D.canvas.height * 0.02;
-        var sizeX    = Math.round( ( D.canvas.width - spaceX ) / cellCount.x - spaceX );
-        var sizeY    = Math.round( ( D.canvas.height - spaceY ) / cellCount.y - spaceY );
+        var sizeX    = Math.round( ( D.canvas.width - spaceX ) / D.fieldCountX - spaceX );
+        var sizeY    = Math.round( ( D.canvas.height - spaceY ) / D.fieldCountY - spaceY );
 
         if ( pNumber > 0 ) {
             var posX = pIsCalculated ? pX : Math.round( spaceX + pX * ( sizeX + spaceX ) );
