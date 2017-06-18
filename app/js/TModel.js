@@ -5,7 +5,7 @@ function TModel ( pData, pView ) {
     D.field                     = D.field || buildField( cellCount.x, cellCount.y );
     //creates initial D.field;
     consoleLog ? console.log('%c%s', 'color: green;', 'Model.success: Field is initialized...', D.field) : '';
-    D.merge                     = [];//for cells with needMerge = true
+    //D.merge                     = [];//for cells with needMerge = true
     D.readyToNew                = false;//indicates if model is ready for new cell
     D.busy                      = false;//isMoving + isScaling
     D.needNew                   = true;
@@ -109,7 +109,11 @@ function TModel ( pData, pView ) {
             };
             if ( D.needNew && !D.busy ) {
                 D.needNew = false;
-                self.NewCell();
+                var newCellCount = cellCount.x * cellCount.y;
+                newCellCount = ( newCellCount % 16 > 0 ) ? Math.floor( newCellCount / 16 ) + 1 : newCellCount / 16;
+                for ( var k = 1; k <= newCellCount; k++ ){
+                    self.NewCell();
+                };
             };
             if ( D.view ) {
                 D.view.Update();
